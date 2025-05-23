@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Deckbuilder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Deckbuilder</h1>
+
+    <div class="columns">
+      <section id="cards">
+        <h2>Cartas disponíveis</h2>
+        <ul id="card-list"></ul>
+      </section>
+
+      <section id="deck">
+        <h2>Deck atual</h2>
+        <ul id="deck-list"></ul>
+      </section>
+    </div>
+
+    <section id="controls">
+      <input type="text" id="deck-name" placeholder="Nome do deck">
+      <button id="save-deck">Salvar Deck</button>
+      <button id="load-deck">Carregar Deck</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
