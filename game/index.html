@@ -4,6 +4,23 @@
   <meta charset="UTF-8" />
   <title>Jogo Online - Deckbuilder</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #turn-indicator {
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 4px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .your-turn {
+      color: #00aaff;
+      background-color: #000;
+    }
+    .opponent-turn {
+      color: #ffaa00;
+      background-color: #000;
+    }
+  </style>
 </head>
 <body>
   <h1>Jogo Online</h1>
@@ -17,6 +34,17 @@
   </div>
 
   <div id="game-section" style="display:none;">
+    <div id="turn-indicator" class="opponent-turn">Aguardando oponente...</div>
+    <button id="end-turn" style="display:none;">Passar Turno</button>
+
+    <div id="life-points">
+      <p id="player-life">Você: 20 LP</p>
+      <p id="opponent-life">Oponente: 20 LP</p>
+    </div>
+
+    <h2>Sua Mão</h2>
+    <ul id="player-hand" class="card-list"></ul>
+
     <h2>Seu Deck</h2>
     <ul id="player-deck" class="card-list"></ul>
 

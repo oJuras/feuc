@@ -80,9 +80,43 @@ io.on('connection', (socket) => {
 
   socket.on('joinGame', ({ gameId, deck }) => {
     socket.join(gameId);
-    if (!gameSessions[gameId]) gameSessions[gameId] = { players: [] };
-    gameSessions[gameId].players.push({ id: socket.id, deck });
-    io.to(gameId).emit('playerJoined', { players: gameSessions[gameId].players.length });
+
+    if (!gameSessions[gameId]) {
+      gameSessions[gameId] = { players: [], turnIndex: 0 };
+    }
+
+    const game = gameSessions[gameId];
+
+    // Impede mais de dois jogadores
+    if (game.players.length >= 2) {
+      socket.emit('error', 'Sala cheia.');
+      return;
+    }
+
+    game.players.push({ id: socket.id, deck });
+    io.to(gameId).emit('playerJoined', { players: game.players.length });
+
+    // Se dois jogadores, inicia o turno do jogador 0
+    if (game.players.length === 2) {
+      const currentPlayer = game.players[game.turnIndex];
+      const otherPlayer = game.players[1 - game.turnIndex];
+
+      io.to(currentPlayer.id).emit('yourTurn');
+      io.to(otherPlayer.id).emit('opponentTurn');
+    }
+  });
+
+  socket.on('endTurn', ({ gameId }) => {
+    const game = gameSessions[gameId];
+    if (!game || game.players.length !== 2) return;
+
+    game.turnIndex = 1 - game.turnIndex; // Alterna entre 0 e 1
+
+    const currentPlayer = game.players[game.turnIndex];
+    const otherPlayer = game.players[1 - game.turnIndex];
+
+    io.to(currentPlayer.id).emit('yourTurn');
+    io.to(otherPlayer.id).emit('opponentTurn');
   });
 
   socket.on('playCard', ({ gameId, card }) => {
@@ -91,12 +125,18 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     for (const gameId in gameSessions) {
-      gameSessions[gameId].players = gameSessions[gameId].players.filter(p => p.id !== socket.id);
-      if (gameSessions[gameId].players.length === 0) delete gameSessions[gameId];
+      const game = gameSessions[gameId];
+      game.players = game.players.filter(p => p.id !== socket.id);
+
+      if (game.players.length === 0) {
+        delete gameSessions[gameId];
+      }
     }
+
     console.log('Jogador desconectado:', socket.id);
   });
 });
+
 
 server.listen(3000, () => {
   console.log('Servidor de jogo online iniciado em http://localhost:3000');
