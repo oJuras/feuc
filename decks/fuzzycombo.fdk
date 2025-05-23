@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fuzzy:reuniao",
+    "name": "Fuzzy: Reunião",
+    "type": "spell",
+    "effect": "Efeito resposta: envie 1 carta Fuzzy da sua mão para o descarte e negue o efeito de 1 carta utilitária do oponente."
+  },
+  {
+    "id": "fuzzy:origem",
+    "name": "Fuzzy: Origem",
+    "type": "spell",
+    "effect": "Envie 4 cartas do topo da sua pilha para o descarte e compre 2 cartas."
+  },
+  {
+    "id": "fuzzy:conflito",
+    "name": "Fuzzy: Conflito",
+    "type": "spell",
+    "effect": "Efeito resposta: envie 2 unidades Fuzzy do campo para o descarte e seu oponente deve enviar 1 unidade do campo dele para o descarte."
+  },
+  {
+    "id": "fuzzy:xande",
+    "name": "Fuzzy: Xande",
+    "type": "monster",
+    "effect": "Você pode revelar essa carta na sua mão: embaralhe-a na pilha e adicione 1 unidade Fuzzy da pilha à sua mão."
+  },
+  {
+    "id": "fuzzy:fausto",
+    "name": "Fuzzy: Fausto",
+    "type": "monster",
+    "effect": "Não pode ser enviado ao descarte por efeitos do oponente durante o turno em que foi convocado."
+  },
+  {
+    "id": "fuzzy:sartore2",
+    "name": "Fuzzy: Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, seu oponente deve enviar 1 carta da mão dele para o descarte e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore1",
+    "name": "Fuzzy: Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, adicione uma carta utilitária Fuzzy da pilha à sua mão e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:walter",
+    "name": "Fuzzy: Walter",
+    "type": "monster",
+    "effect": "Ao ser convocado, você pode escolher uma carta em campo: envie-a para o descarte."
+  },
+  {
+    "id": "fuzzy:v.h.",
+    "name": "Fuzzy: V.H.",
+    "type": "monster",
+    "effect": "Você pode revelar essa carta na mão: embaralhe-a na pilha e adicione 'Só Falar o Local' da pilha à sua mão."
+  },
+  {
+    "id": "fuzzy:v.h.",
+    "name": "Fuzzy: V.H.",
+    "type": "monster",
+    "effect": "Você pode revelar essa carta na mão: embaralhe-a na pilha e adicione 'Só Falar o Local' da pilha à sua mão."
+  },
+  {
+    "id": "fuzzy:v.h.",
+    "name": "Fuzzy: V.H.",
+    "type": "monster",
+    "effect": "Você pode revelar essa carta na mão: embaralhe-a na pilha e adicione 'Só Falar o Local' da pilha à sua mão."
+  },
+  {
+    "id": "so-falar-o-local",
+    "name": "Só Falar o Local",
+    "type": "spell",
+    "effect": "Permanece em campo até o final do jogo. Ao ativar, convoque 3 unidades Fuzzy da pilha e envie-as para o descarte ao final do próximo turno."
+  },
+  {
+    "id": "so-falar-o-local",
+    "name": "Só Falar o Local",
+    "type": "spell",
+    "effect": "Permanece em campo até o final do jogo. Ao ativar, convoque 3 unidades Fuzzy da pilha e envie-as para o descarte ao final do próximo turno."
+  },
+  {
+    "id": "so-falar-o-local",
+    "name": "Só Falar o Local",
+    "type": "spell",
+    "effect": "Permanece em campo até o final do jogo. Ao ativar, convoque 3 unidades Fuzzy da pilha e envie-as para o descarte ao final do próximo turno."
+  }
+]

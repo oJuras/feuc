@@ -1,0 +1,92 @@
+[
+  {
+    "id": "sartores",
+    "name": "Sartores",
+    "type": "spell",
+    "effect": "Ao ativar, convoque 1 unidade Sartore da pilha."
+  },
+  {
+    "id": "sartores",
+    "name": "Sartores",
+    "type": "spell",
+    "effect": "Ao ativar, convoque 1 unidade Sartore da pilha."
+  },
+  {
+    "id": "sartores",
+    "name": "Sartores",
+    "type": "spell",
+    "effect": "Ao ativar, convoque 1 unidade Sartore da pilha."
+  },
+  {
+    "id": "sartore1",
+    "name": "Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #2 da pilha e compre 1 carta."
+  },
+  {
+    "id": "sartore1",
+    "name": "Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #2 da pilha e compre 1 carta."
+  },
+  {
+    "id": "sartore1",
+    "name": "Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #2 da pilha e compre 1 carta."
+  },
+  {
+    "id": "sartore2",
+    "name": "Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #1 da pilha e compre 1 carta."
+  },
+  {
+    "id": "sartore2",
+    "name": "Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #1 da pilha e compre 1 carta."
+  },
+  {
+    "id": "sartore2",
+    "name": "Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, convoque Sartore #1 da pilha e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore2",
+    "name": "Fuzzy: Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, seu oponente deve enviar 1 carta da mão dele para o descarte e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore2",
+    "name": "Fuzzy: Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, seu oponente deve enviar 1 carta da mão dele para o descarte e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore2",
+    "name": "Fuzzy: Sartore #2",
+    "type": "monster",
+    "effect": "Ao ser convocado, seu oponente deve enviar 1 carta da mão dele para o descarte e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore1",
+    "name": "Fuzzy: Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, adicione uma carta utilitária Fuzzy da pilha à sua mão e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore1",
+    "name": "Fuzzy: Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, adicione uma carta utilitária Fuzzy da pilha à sua mão e compre 1 carta."
+  },
+  {
+    "id": "fuzzy:sartore1",
+    "name": "Fuzzy: Sartore #1",
+    "type": "monster",
+    "effect": "Ao ser convocado, adicione uma carta utilitária Fuzzy da pilha à sua mão e compre 1 carta."
+  }
+]

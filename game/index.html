@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jogo Online - Deckbuilder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Jogo Online</h1>
+
+  <div id="connect-section">
+    <input type="text" id="game-id" placeholder="ID do jogo" />
+    <select id="deck-select-game">
+      <option value="">-- Selecione seu deck --</option>
+    </select>
+    <button id="join-game">Entrar no Jogo</button>
+  </div>
+
+  <div id="game-section" style="display:none;">
+    <h2>Seu Deck</h2>
+    <ul id="player-deck" class="card-list"></ul>
+
+    <h2>Cartas Jogadas</h2>
+    <div id="played-cards">
+      <div>
+        <h3>Você</h3>
+        <ul id="your-played" class="card-list"></ul>
+      </div>
+      <div>
+        <h3>Oponente</h3>
+        <ul id="opponent-played" class="card-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

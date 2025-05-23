@@ -1,18 +1,66 @@
-const fs = require('fs');
-const path = require('path');
-const cardsPath = path.join(__dirname, '../public/data/cards.json');
-const decksDir = path.join(__dirname, '../decks');
+// Conectar ao servidor socket.io
+const socket = io();
+
+// Eventos de conexão
+socket.on('connect', () => {
+  console.log('Conectado ao servidor com ID:', socket.id);
+});
+
+// Elementos da interface
+const cardList = document.getElementById('card-list');
+const deckList = document.getElementById('deck-list');
+const deckNameInput = document.getElementById('deck-name');
+const deckSelect = document.getElementById('deck-select');
+const deleteDeckBtn = document.getElementById('delete-deck');
+const saveDeckBtn = document.getElementById('save-deck');
 
 let allCards = [];
 let currentDeck = [];
 
-const cardList = document.getElementById('card-list');
-const deckList = document.getElementById('deck-list');
-const deckNameInput = document.getElementById('deck-name');
+// Buscar lista de cartas
+fetch('/data/cards.json')
+  .then(res => res.json())
+  .then(data => {
+    allCards = data;
+    renderCards();
+  })
+  .catch(() => alert('Erro ao carregar cards.'));
 
-document.getElementById('save-deck').onclick = saveDeck;
-document.getElementById('load-deck').onclick = loadDeck;
+// Popular dropdown com os decks existentes
+function populateDeckSelect() {
+  fetch('/decks')
+    .then(res => res.json())
+    .then(decks => {
+      deckSelect.innerHTML = '<option value="">-- Selecione um deck --</option>';
+      decks.forEach(deck => {
+        const option = document.createElement('option');
+        option.value = deck;
+        option.textContent = deck;
+        deckSelect.appendChild(option);
+      });
+    })
+    .catch(() => alert('Erro ao listar decks.'));
+}
 
+// Carregar deck selecionado
+deckSelect.onchange = () => {
+  const name = deckSelect.value;
+  if (!name) return;
+
+  fetch(`/decks/${name}`)
+    .then(res => {
+      if (!res.ok) throw new Error();
+      return res.json();
+    })
+    .then(deck => {
+      currentDeck = deck;
+      deckNameInput.value = name;
+      renderDeck();
+    })
+    .catch(() => alert('Erro ao carregar o deck.'));
+};
+
+// Renderizar cartas disponíveis
 function renderCards() {
   cardList.innerHTML = '';
   allCards.forEach(card => {
@@ -24,6 +72,7 @@ function renderCards() {
   });
 }
 
+// Renderizar deck atual
 function renderDeck() {
   deckList.innerHTML = '';
   currentDeck.forEach((card, index) => {
@@ -35,6 +84,7 @@ function renderDeck() {
   });
 }
 
+// Adicionar carta ao deck
 function addToDeck(cardId) {
   const card = allCards.find(c => c.id === cardId);
   if (card) {
@@ -43,31 +93,51 @@ function addToDeck(cardId) {
   }
 }
 
+// Remover carta do deck
 function removeFromDeck(index) {
   currentDeck.splice(index, 1);
   renderDeck();
 }
 
-function saveDeck() {
+// Salvar deck
+saveDeckBtn.onclick = () => {
   const name = deckNameInput.value.trim();
   if (!name) return alert('Nome do deck obrigatório.');
-  fs.mkdirSync(decksDir, { recursive: true });
-  fs.writeFileSync(path.join(decksDir, `${name}.fdk`), JSON.stringify(currentDeck, null, 2));
-  alert('Deck salvo com sucesso!');
-}
 
-function loadDeck() {
-  const name = deckNameInput.value.trim();
-  if (!name) return alert('Nome do deck obrigatório.');
-  const filePath = path.join(decksDir, `${name}.fdk`);
-  if (!fs.existsSync(filePath)) return alert('Deck não encontrado.');
-  const data = fs.readFileSync(filePath);
-  currentDeck = JSON.parse(data);
-  renderDeck();
-}
+  fetch(`/save-deck/${encodeURIComponent(name)}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(currentDeck)
+  })
+    .then(res => {
+      if (!res.ok) throw new Error();
+      alert('Deck salvo com sucesso!');
+      populateDeckSelect();
+    })
+    .catch(() => alert('Erro ao salvar deck.'));
+};
 
-fs.readFile(cardsPath, 'utf8', (err, data) => {
-  if (err) return alert('Erro ao carregar cards.');
-  allCards = JSON.parse(data);
-  renderCards();
-});
+// Deletar deck
+deleteDeckBtn.onclick = () => {
+  const name = deckSelect.value;
+  if (!name) return alert('Selecione um deck para excluir.');
+
+  fetch(`/delete-deck/${encodeURIComponent(name)}`, { method: 'DELETE' })
+    .then(res => {
+      if (!res.ok) throw new Error();
+      alert('Deck excluído com sucesso.');
+      currentDeck = [];
+      renderDeck();
+      deckNameInput.value = '';
+      populateDeckSelect();
+    })
+    .catch(() => alert('Erro ao excluir deck.'));
+};
+
+// Botão para ir à tela de jogo online
+document.getElementById('btnPlayOnline').onclick = () => {
+  window.location.href = '/game/';
+};
+
+// Inicializar dropdown
+populateDeckSelect();

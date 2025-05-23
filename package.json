@@ -1,14 +1,20 @@
 {
-  "name": "deckbuilder",
+  "name": "deckbuilder-game",
   "version": "1.0.0",
-  "description": "Um sistema de deckbuilding com Electron",
-  "main": "main.js",
+  "description": "Aplicativo Electron para deckbuilding e jogo online de cartas",
+  "main": "./game/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "nodemon main.js"
   },
   "author": "Seu Nome",
   "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.1"
+  },
   "devDependencies": {
-    "electron": "^29.0.0"
+    "electron": "^26.2.0",
+    "nodemon": "^3.0.1"
   }
 }
