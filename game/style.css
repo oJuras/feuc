@@ -42,3 +42,37 @@ h1, h2, h3 {
 #played-cards div {
   width: 45%;
 }
+#deck-container {
+  border: 2px solid #4caf50;
+  padding: 10px;
+  width: 180px;
+  background-color: #111;
+  color: white;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+#deck-title {
+  font-weight: bold;
+  text-align: center;
+  background-color: #4caf50;
+  color: black;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+#deck-visual {
+  width: 120px;
+  height: 160px;
+  background-color: #222;
+  color: #4caf50;
+  border: 3px solid #4caf50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  user-select: none;
+}
